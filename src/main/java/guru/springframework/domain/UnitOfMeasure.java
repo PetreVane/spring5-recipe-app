@@ -5,9 +5,16 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
-@Data
 @Entity
 public class UnitOfMeasure extends AbstractEntity {
 
     private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
