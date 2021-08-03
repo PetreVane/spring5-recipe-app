@@ -33,8 +33,19 @@ public class Recipe extends AbstractEntity {
 
     // mappedBy = "recipe" points to 'recipe' field within Ingredient
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "recipe")
-    @ToString.Exclude
     private Set<Ingredient> ingredients;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
     public void addIngredient(Ingredient ingredient) {
         if (ingredients == null) {

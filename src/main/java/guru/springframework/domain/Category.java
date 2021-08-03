@@ -1,6 +1,7 @@
 package guru.springframework.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
@@ -10,7 +11,11 @@ public class Category extends AbstractEntity {
 
     private String description;
 
+    // points to 'categories' field inside the Recipe entity
+    @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
+
+
 
     public String getDescription() {
         return description;
